@@ -23,14 +23,14 @@ spec:
     spec:
       containers:
       - name: carts
-        image: weaveworksdemos/carts:0.4.8
+        image: weaveworksdemos/carts:latest
         env:
          - name: JAVA_OPTS
            value: -Xms64m -Xmx128m -XX:+UseG1GC -Djava.security.egd=file:/dev/urandom -Dspring.zipkin.enabled=false
         resources:
           limits:
-            cpu: 300m
-            memory: 500Mi
+            cpu: 500m
+            memory: 800Mi
           requests:
             cpu: 100m
             memory: 200Mi
@@ -154,11 +154,11 @@ spec:
         - -port=80
         resources:
           limits:
+            cpu: 400m
+            memory: 800Mi
+          requests:
             cpu: 200m
             memory: 200Mi
-          requests:
-            cpu: 100m
-            memory: 100Mi
         ports:
         - containerPort: 80
         securityContext:
@@ -265,14 +265,14 @@ spec:
     spec:
       containers:
       - name: front-end
-        image: weaveworksdemos/front-end:0.3.12
+        image: weaveworksdemos/front-end:latest
         resources:
           limits:
-            cpu: 300m
-            memory: 1000Mi
+            cpu: 500m
+            memory: 2000Mi
           requests:
-            cpu: 100m
-            memory: 300Mi
+            cpu: 200m
+            memory: 400Mi
         ports:
         - containerPort: 8079
         env:
